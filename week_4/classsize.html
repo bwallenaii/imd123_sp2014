@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <script>
+            var desiredClassSize;
+            var actualClassSize;
+            
+            desiredClassSize = prompt("What is your desired class size?");
+            desiredClassSize = Number(desiredClassSize);
+            
+            while(desiredClassSize < 0 || isNaN(desiredClassSize))
+            {
+                alert("Please provide a number greater than 0.");
+                desiredClassSize = prompt("What is your desired class size?");
+                desiredClassSize = Number(desiredClassSize);
+            }
+            
+            actualClassSize = prompt("What is your actual class size?");
+            actualClassSize = Number(actualClassSize);
+            
+            while(actualClassSize < 0 || isNaN(actualClassSize))
+            {
+                alert("Please provide a number greater than 0.");
+                actualClassSize = prompt("What is your actual class size?");
+                actualClassSize = Number(actualClassSize);
+            }
+            
+            if(desiredClassSize < actualClassSize)
+            {
+                alert("Your class is too large.");
+            }
+            else if(desiredClassSize > actualClassSize)
+            {
+                alert("Your class is too small!");
+            }
+            else
+            {
+                alert("Your class is just right, Goldilocks!");
+            }
+            
+            alert("Aren't you glad I was here?");
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>
