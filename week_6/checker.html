@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <script>
+        /**
+         * START
+         *  Declare String emailAddress = ""
+         *  Declare Number numDonuts = 0
+         *  Declare Number donutPrice = 0.89
+         *  Declare Number cost = 0
+         *  Declare Number taxes = 0.0685
+         * 
+         * 
+         *  while emailAddress NOT match /[A-Za-z0-9]+([\w-\.]+)@((?:[\w]+\.)+)([a-zA-Z]{2,4})/i
+         *      Output "Please provide your email address. . . "
+         *      Input emailAddress
+         *  end while
+         * 
+         *  while numDonuts < 1 OR numDonuts is not a number
+         *      Output "How many donuts would you like delivered to ", emailAddress, "?"
+         *      Input numDonuts
+         *  end while
+         * 
+         *  cost = numDonuts * donutPrice
+         *  cost += cost * taxes
+         *  cost = ceiling(cost*100)/100
+         * 
+         *  Ouptut "You will be charged ", cost, " and we will send those to ", emailAddress
+         *  Output "Thank you and have a powerful day!"
+         * 
+         * END
+         */
+        
+            var emailAddress = "";
+            var numDonuts = 0;
+            var donutPrice = 0.89;
+            var cost = 0;
+            var taxes = 0.0685;
+            
+            while(!emailAddress.match(/[A-Za-z0-9]+([\w-\.]+)@((?:[\w]+\.)+)([a-zA-Z]{2,4})/i))
+            {
+                emailAddress = prompt("Please provide your email address. . . ");
+            }
+            
+            while(numDonuts < 1 || isNaN(numDonuts))
+            {
+                numDonuts = prompt("How many donuts would you like delivered to " + emailAddress + "?");
+                numDonuts = Number(numDonuts);
+            }
+            cost = numDonuts * donutPrice;
+            cost += cost * taxes;
+            cost =  Math.ceil(cost*100)/100;
+            alert("You will be charged " + cost + " and we will send those to " + emailAddress);
+            alert("Thank you and have a powerful day!");
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>
