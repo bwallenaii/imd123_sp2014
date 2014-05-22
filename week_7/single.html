@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <script>
+            var name;
+            var dog = {
+                furColor:"black",
+                name:"Bingo",
+                age:4
+            };
+            
+            name = prompt("Would you like to give " + dog.name + " a new name?");
+            
+            if(name && name != "null" && name != "")
+            {
+                dog.name = name;
+            }
+            alert("Your dog is now called " + dog.name);
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

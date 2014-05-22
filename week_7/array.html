@@ -1,0 +1,137 @@
+<html>
+    <head>
+        <style>
+            .order{
+                border-bottom: 3px dashed #999999;
+                margin-bottom: 15px;
+            }
+            
+            .order p{
+                border-bottom: 1px dashed #cccccc;
+            }
+        </style>
+        <script>
+            /**
+             * Collect a group of donut orders. Each order will 
+             * consist of type, amount, and email. It will then
+             * calculate the cost of the order based on 0.89 per
+             * donut. After each order, check if there is another
+             * order to make. Store each order in an array. Once
+             * all orders are collected, print them out.
+             * 
+             * Pseudo-code:
+             * 
+             * START
+             *      Declare Object orders[]
+             *      Declare Object order
+             *      Declare Number donutPrice = 0.89
+             *      Declare Number taxes = 0.0685
+             *      Declare Boolean anotherOrder = true
+             *      Declare String userAnswer
+             * 
+             *      while anotherOrder
+             *          order = new Object
+             *          order.emailAddress = ""
+             *          order.numDonuts = 0
+             *          order.donutType = ""
+             *          
+             *          while order.emailAddress NOT match /[A-Za-z0-9]+([\w-\.]+)@((?:[\w]+\.)+)([a-zA-Z]{2,4})/i
+             *              Output "Please provide your email address. . ."
+             *              Input order.emailAddress
+             *          end while
+             *          
+             *          Output "What type of donut do you want?"
+             *          Input order.donutType
+             * 
+             *          while order.numDonuts < 1 OR order.numDonuts is not a number
+             *              Output "How many donuts would you like?"
+             *              Input order.numDonuts
+             *          end while
+             * 
+             *          order.subTotal = order.numDonuts * donutPrice
+             *          order.taxes = cieling((order.subTotal * taxes)*100)/100
+             *          order.total = cieling((order.subTotal + order.taxes)*100)/100
+             * 
+             *          orders.push(order)
+             * 
+             *          Output "Would you like to make another order? (y or n)"
+             *          Input userAnswer
+             *          if lowercase(userAnswer) != "y"
+             *              anotherOrder = false
+             *          end if
+             *      end while
+             * 
+             *      for i = 0 to orders.length
+             *          Output "Email: ", orders[i].emailAddress
+             *          Output "Amount: ", orders[i].numDonuts
+             *          Output "Type: ", orders[i].donutType
+             *          Output "Sub Total: ", orders[i].subTotal
+             *          Output "Tax: ", orders[i].taxes
+             *          Output "Total: ", orders[i].total
+             *          Output "================================="
+             *      end for
+             * END
+             * 
+             */
+             
+             var orders = new Array();
+             var order = new Object();
+             var donutPrice = 0.89;
+             var taxes = 0.0685;
+             var anotherOrder = true;
+             var userAnswer;
+             
+             while(anotherOrder)
+             {
+                order = new Object();
+                order.emailAddress = "";
+                order.numDonuts = 0;
+                order.donutType = "";
+                
+                while(!order.emailAddress.match(/[A-Za-z0-9]+([\w-\.]+)@((?:[\w]+\.)+)([a-zA-Z]{2,4})/i))
+                {
+                    order.emailAddress = prompt("Please provide your email address. . . ");
+                    order.emailAddress = order.emailAddress == null ? "":order.emailAddress;
+                }
+                
+                order.donutType = prompt("What type of donut do you want?");
+                
+                while(order.numDonuts < 1 || isNaN(order.numDonuts))
+                {
+                    order.numDonuts = prompt("How many donuts would you like delivered to " + order.emailAddress + "?");
+                    order.numDonuts = Number(order.numDonuts);
+                }
+                
+                order.subTotal = order.numDonuts * donutPrice;
+                order.taxes = Math.ceil((order.subTotal * taxes)*100)/100;
+                order.total = Math.ceil((order.subTotal + order.taxes)*100)/100;
+                
+                orders.push(order);
+                
+                //anotherOrder = confirm("Would you like to make another order?");
+                userAnswer = prompt("Would you like to make another order? (y or n)");
+                if(userAnswer.toLowerCase() != "y")
+                {
+                    anotherOrder = false;
+                }
+             }
+             
+        </script>
+    </head>
+    <body>
+        <script>
+            for(var i = 0; i < orders.length;i++)
+            {
+                document.write("<div class='order'>");
+                document.write("<p>Type: " + orders[i].donutType +"</p>");
+                document.write("<p>Amount: " + orders[i].numDonuts +"</p>");
+                document.write("<p>Send to: " + orders[i].emailAddress +"</p>");
+                document.write("<p>Sub Total: " + orders[i].subTotal +"</p>");
+                document.write("<p>Tax: " + orders[i].taxes +"</p>");
+                document.write("<p>Total: " + orders[i].total +"</p>");
+                document.write("</div>");
+            }
+            
+        </script>
+    </body>
+</html>
