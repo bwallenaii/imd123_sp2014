@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <script>
+            var numDonuts = null;
+            var age = 0;
+            
+            /**
+             * function Number getNumber(String request, Number low = null, Number high = null)
+             *      Declare Boolean isValid = false
+             *      Declare Number userNumber = null
+             * 
+             *      while(!isValid)
+             *          Output request
+             *          Input userNumber
+             *          
+             *          if userNumber is a Number
+             *              isValid = true
+             *          end if
+             *          if isValid AND low != null AND userNumber < low
+             *              isValid = false
+             *          end if
+             *          if isValid AND high != null AND userNumber > high
+             *              isValid = false
+             *          end if
+             *      end while
+             * return userNumber
+             */
+            function getNumber(request, low, high)
+            {
+                var isValid = false;
+                var userNumber = null;
+                while(!isValid)
+                {
+                    userNumber = prompt(request);
+                    userNumber = Number(userNumber);
+                    if(!isNaN(userNumber))
+                    {
+                        isValid = true;
+                    }
+                    if(isValid && low && userNumber < low)
+                    {
+                        isValid = false;
+                    }
+                    if(isValid && high && userNumber > high)
+                    {
+                        isValid = false;
+                    }
+                }
+                
+                return userNumber;
+            }
+            
+            function validateString(request, regex)
+            {
+                var userString = null;
+                while(!userString || !userString.match(regex))
+                {
+                    userString = prompt(request);
+                }
+                return userString;
+            }
+            
+            //----------------------------
+            
+            numDonuts = getNumber("How many donuts would you like?", 1);
+            age = getNumber("How old are you?", 1, 100);
+            var email = validateString("Please provide your email address", /[A-Za-z0-9]+([\w-\.]+)@((?:[\w]+\.)+)([a-zA-Z]{2,4})/i);
+            console.log(email);
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>
